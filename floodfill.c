@@ -6,9 +6,10 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:51:46 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/18 11:50:31 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:57:07 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	fill(char **map, )
