@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:59 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/14 08:57:00 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:40:07 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	top_wall(t_game *game)
 	while (game->map[0][i])
 	{
 		if (game->map[0][i] != '1')
-			return (false)
+			return (false);
 	}
 	return (true);
 }
@@ -43,7 +43,7 @@ bool	down_wall(t_game *game)
 	}
 	return (true);
 }
-bool	right_side_wall(t_stuct *game)
+bool	right_side_wall(t_game *game)
 {
 	int	i;
 	int	len;
@@ -60,7 +60,7 @@ bool	right_side_wall(t_stuct *game)
 	}
 	return (true);
 }
-bool	left_side_wall(t_struct *game)
+bool	left_side_wall(t_game *game)
 {
 	int i;
 	i = 0;

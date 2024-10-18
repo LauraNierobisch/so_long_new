@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:55:19 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/14 08:55:52 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:40:45 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	exit_valid(t_game *game)
 	return (true);
 }
 
-bool	player_valid(t_game *game)
+bool	exit_valid(t_game *game)
 {
 	int	p_found;
 	int	i;

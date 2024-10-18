@@ -6,9 +6,14 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/14 08:56:26 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:06:44 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 
-#include <so_long.h>
+int	main(void)
+{
+	ft_putchar_fd('b', 1);
+	return (0);
+}
