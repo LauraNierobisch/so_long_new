@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:58:00 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/18 11:41:04 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:10:52 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,23 @@
 # include "mlx42/include/MLX42/MLX42.h"
 # include <stdbool.h>
 # include <stddef.h>
+# include <fcntl.h>
 
-typedef struct s_position;
+typedef struct s_position
 {
 	size_t x;
 	size_t y;
 }			t_position;
+
 typedef struct s_game
 {
 	char **map;
+	int maplines;
+	int fd;
+	char *line;
+	char *map_string;
+	char *tmp;
+
 }	t_game;
 
 bool	top_wall(t_game *game);
@@ -35,5 +43,7 @@ bool	left_side_wall(t_game *game);
 bool	exit_valid(t_game *game);
 bool	exit_valid(t_game *game);
 bool	colect_valid(t_game *game);
+void	reading_map(t_game *game , char *path);
+void	map_validation(t_game *game);
 
 #endif

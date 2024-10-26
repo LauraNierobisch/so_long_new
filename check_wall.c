@@ -6,12 +6,12 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:59 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/18 11:40:07 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:26:29 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include <so_long.h>
+#include "so_long.h"
 
 bool	top_wall(t_game *game)
 {

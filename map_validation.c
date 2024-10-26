@@ -6,11 +6,11 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:55:19 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/18 11:40:45 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:16:35 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "so_long.h"
 
 bool	exit_valid(t_game *game)
 {
@@ -38,7 +38,7 @@ bool	exit_valid(t_game *game)
 	return (true);
 }
 
-bool	exit_valid(t_game *game)
+bool	player_valid(t_game *game)
 {
 	int	p_found;
 	int	i;
@@ -62,10 +62,13 @@ bool	exit_valid(t_game *game)
 }
 bool	colect_valid(t_game *game)
 {
-	int c_found = 0;
-	int i = 0;
-	int j = 1;
+	int	c_found;
+	int	i;
+	int	j;
 
+	c_found = 0;
+	i = 0;
+	j = 1;
 	while (game->map[i])
 	{
 		while (game->map[i][j] == 'C')
@@ -78,4 +81,33 @@ bool	colect_valid(t_game *game)
 		return (false);
 	}
 	return (true);
+}
+void	map_validation(t_game *game)
+{
+	if (!left_side_wall(game))
+	{
+		ft_putstr_fd("Error left side wall\n",2);
+		return;
+	}
+	if (!right_side_wall(game))
+	{
+		ft_putstr_fd("Error right side wall\n",2);
+		return;
+	}
+	if(!down_wall(game))
+	{
+		ft_putstr_fd("Error down wall\n",2);
+		return;
+	}
+	if(!top_wall(game))
+	{
+		ft_putstr_fd("Error top wall\n",2);
+		return;
+	}
+	if(!colect_valid(game))
+	{
+		ft_putstr_fd("Error collectables\n",2);
+	}
+
+	return;
 }

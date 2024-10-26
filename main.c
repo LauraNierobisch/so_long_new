@@ -6,14 +6,20 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/18 11:06:44 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:08:26 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "stdio.h"
 
-int	main(void)
+int main(int argc, char *argv[])
 {
-	ft_putchar_fd('b', 1);
+	if(argc != 2)
+		return (1);
+	t_game	game;
+	argc = 0;
+	reading_map(&game, argv[1]);
+	map_validation(&game);
 	return (0);
 }
