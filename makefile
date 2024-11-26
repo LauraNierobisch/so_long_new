@@ -6,15 +6,15 @@
 #    By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 10:12:21 by lnierobi          #+#    #+#              #
-#    Updated: 2024/10/21 18:11:41 by lnierobi         ###   ########.fr        #
+#    Updated: 2024/10/26 12:37:53 by lnierobi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME=so_long
-CC=cc
-CFLAGS=-Wall -Wextra -Werror
-LDFLAGS=
+NAME = so_long
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+LDFLAGS = -fsanitize=address
 OBJ_DIR := ./obj
 DEP_DIR := $(OBJ_DIR)/.deps
 INC_DIRS := .
@@ -36,10 +36,9 @@ MLXFT_LIB = $(MLXFT_BUILD_DIR)/$(MLXFT)
 MLXFTFLAGS = -L$(MLXFT_BUILD_DIR) -lmlx42 -Iinclude -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 MLXFT_REPO = https://github.com/codam-coding-college/MLX42.git
 
-SRCS= main.c reading_map.c map_validation.c#check_wall.c floodfill.c 
+SRCS = main.c reading_map.c map_validation.c check_wall.c #floodfill.c
 
 OBJECTS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
-
 
 .PHONY: all clean fclean re libft mlx init-submodules remove-submodules
 
@@ -49,7 +48,7 @@ all: init-submodules $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(DEPFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 init-submodules: init-libft init-mlx
 
@@ -101,9 +100,8 @@ $(MLXFT_LIB): init-mlx
 		(echo "$(RED)Failed to build MLX42$(X)" && exit 1); \
 	fi
 
-
 $(NAME): $(LIBFT_LIB) $(MLXFT_LIB) $(OBJECTS)
-	@$(CC) -o $@ $(OBJECTS) $(LIBFTFLAGS) -L$(MLXFT_BUILD_DIR) -lmlx42 $(MLXFTFLAGS) $(SYSLIBFLAGS) $(LDFLAGS)
+	@$(CC) -o $@ $(OBJECTS) $(LIBFTFLAGS) $(MLXFTFLAGS) $(LDFLAGS)
 	@echo "$(SUCCESS)"
 
 clean: remove-submodules
@@ -114,6 +112,6 @@ clean: remove-submodules
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "$(RED)cube3d deleted$(X)"
+	@echo "$(RED)so_long deleted$(X)"
 
 re: fclean all

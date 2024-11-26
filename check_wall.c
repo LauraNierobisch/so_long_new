@@ -6,10 +6,9 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:59 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/21 17:26:29 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/10/26 13:55:39 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "so_long.h"
 
@@ -18,10 +17,13 @@ bool	top_wall(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map[0][i])
+	while (game->map[0][i] != '\0')
 	{
 		if (game->map[0][i] != '1')
 			return (false);
+		if (game->map[0][i + 1] == '\n')
+			break ;
+		i++;
 	}
 	return (true);
 }
@@ -50,12 +52,14 @@ bool	right_side_wall(t_game *game)
 
 	i = 0;
 	len = ft_strlen(game->map[i]);
-	while (game->map[i][len - 1])
+	while (game->map && game->map[i][len - 1])
 	{
 		if (game->map[i][len - 1] != '1')
 		{
 			return (false);
 		}
+		if (game->map[i + 1] == NULL)
+			break ;
 		i++;
 	}
 	return (true);
