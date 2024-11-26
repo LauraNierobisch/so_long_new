@@ -1,5 +1,6 @@
 *.o
 *.d
+*.c.o.d
 .vscode/
 *.cmake
 maps/
