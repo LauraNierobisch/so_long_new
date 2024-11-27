@@ -6,78 +6,95 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:43 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/26 11:20:25 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:14:23 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	load_texture(t_game *game)
+// void	load_texture(t_game *game)
+void	load_texture(t_texture *texture)
 {
-	game->exit_texture = mlx_load_png("images/exit.png");
-	game->player_texture = mlx_load_png("images/player.png");
-	game->collectible_texture = mlx_load_png("images/colectible.png");
-	game->wall_texture = mlx_load_png("images/wall.png");
-	game->backround_texture = mlx_load_png("images/floor.png");
+	texture->exit = mlx_load_png("images/exit.png");
+	texture->player = mlx_load_png("images/player.png");
+	texture->collectible = mlx_load_png("images/colectibel.png");
+	texture->wall = mlx_load_png("images/wall.png");
+	texture->floor = mlx_load_png("images/floor.png");
 }
-void	rendering_textur(t_game *game)
+
+void	rendering_texture(t_image *image, t_texture *texture, mlx_t *mlx)
 {
-	game->exit_image = mlx_texture_to_image(game->mlx, game->exit_texture);
-	game->player_image = mlx_texture_to_image(game->mlx, game->player_texture);
-	game->collectible_image = mlx_texture_to_image(game->mlx,
-			game->collectible_texture);
-	game->wall_image = mlx_texture_to_image(game->mlx, game->wall_texture);
-	game->backround_image = mlx_texture_to_image(game->mlx,
-			game->backround_texture);
+	image->coffee = mlx_texture_to_image(mlx, texture->collectible);
+	image->exit = mlx_texture_to_image(mlx, texture->exit);
+	image->player = mlx_texture_to_image(mlx, texture->player);
+	image->wall = mlx_texture_to_image(mlx, texture->wall);
+	image->backround = mlx_texture_to_image(mlx, texture->floor);
 }
-mlx_image_t	*texture_to_image(t_game *game, char map_char)
+
+mlx_image_t	*texture_to_image(t_image *image, char map_char)
 {
 	if (map_char == '0')
 	{
-		return (game->backround_image);
+		return (image->backround);
 	}
 	else if (map_char == '1')
 	{
-		return (game->wall_image);
+		return (image->wall);
 	}
 	else if (map_char == 'E')
 	{
-		return (game->exit_image);
+		return (image->exit);
 	}
 	else if (map_char == 'P')
 	{
-		return (game->palyer_image);
+		return (image->player);
 	}
 	else if (map_char == 'C')
 	{
-		return (game->collectible_image);
+		return (image->coffee);
 	}
 	else
 	{
 		return (NULL);
 	}
 }
-
+void	delete_texture(t_texture *texture)
+{
+	mlx_delete_texture(texture->exit);
+	mlx_delete_texture(texture->player);
+	mlx_delete_texture(texture->wall);
+	mlx_delete_texture(texture->floor);
+	mlx_delete_texture(texture->collectible);
+}
 void	map_rendering(t_game *game)
 {
 	size_t i;
 	size_t j;
 	mlx_image_t *img;
+	mlx_image_t *bg_pl;
 
 	i = 0;
-	load_textures(game);
-	render_textures(game);
+	load_texture(&game->texture);
+	rendering_texture(&game->image, &game->texture, game->mlx);
 	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j])
 		{
-			img = mlx_texture_to_image(game, game->map[i][j]);
+			img = texture_to_image(&game->image, game->map[i][j]);
+			bg_pl = texture_to_image(&game->image, '0');
+			mlx_resize_image(img, 50, 50);
 			if (img)
+			{
+				if (game->map[i][j] == 'P')
+					mlx_image_to_window(game->mlx, bg_pl, j * 50, i * 50);
 				mlx_image_to_window(game->mlx, img, j * 50, i * 50);
+			}
+			if (!img || (mlx_image_to_window(game->mlx, img, 0, 0) < 0))
+				exit(1);
 			j++;
 		}
 		i++;
 	}
-	clean_texture(game);
+	delete_texture(&game->texture);
 }

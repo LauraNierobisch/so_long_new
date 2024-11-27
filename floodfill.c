@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:51:46 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/26 11:08:55 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:51:48 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**copy_map(char **map)
 	copy[i] = NULL;
 	return (copy);
 }
-void	free_map(char **map)
+void	ft_free_map(char **map)
 {
 	int	i;
 
@@ -122,15 +122,15 @@ bool	validate_map_accessibility(t_game *game)
 		return (false);
 	if (!find_player_position(game->map, &player_x, &player_y))
 	{
-		free_map(map_copy);
+		ft_free_map(map_copy);
 		return (false);
 	}
 	flood_fill(map_copy, player_x, player_y);
 	if (!check_accessible(map_copy, game->map))
 	{
-		free_map(map_copy);
+		ft_free_map(map_copy);
 		return (false);
 	}
-	free_map(map_copy);
+	ft_free_map(map_copy);
 	return (true);
 }

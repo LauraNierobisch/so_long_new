@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:58:00 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/26 11:20:38 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:51:20 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,37 @@
 # include <stddef.h>
 # include <fcntl.h>
 
+
+# define BLOCK 50
+
 typedef struct s_position
 {
 	size_t x;
 	size_t y;
-}			t_position;
+}	t_position;
+
+typedef struct s_texture
+{
+	mlx_texture_t *collectible;
+	mlx_texture_t *exit;
+	mlx_texture_t *player;
+	mlx_texture_t *wall;
+	mlx_texture_t *floor;
+}	t_texture;
+
+typedef struct s_image
+{
+	mlx_image_t *coffee;
+	mlx_image_t *exit;
+	mlx_image_t *player;
+	mlx_image_t *wall;
+	mlx_image_t *backround;
+}	t_image;
+
 
 typedef struct s_game
 {
+	mlx_t	*mlx;
 	char **map;
 	int maplines;
 	int fd;
@@ -34,9 +57,11 @@ typedef struct s_game
 	char *map_string;
 	char *tmp;
 	int width;
+	int height;
 	int leng;
-	mlx_texture_t collectible_texture;
-	mlx_image_t
+	t_texture	texture;
+	// t_position	pos;
+	t_image 	image;
 }	t_game;
 
 bool	top_wall(t_game *game);
@@ -47,5 +72,21 @@ bool	exit_valid(t_game *game);
 bool	colect_valid(t_game *game);
 void	reading_map(t_game *game , char *path);
 void	map_validation(t_game *game);
+void	load_texture(t_texture *texture);
+void	rendering_texture(t_image *image, t_texture *texture, mlx_t *mlx);
+mlx_image_t	*texture_to_image(t_image *image, char map_char);
+void	map_rendering(t_game *game);
+void	delete_texture(t_texture *texture);
+bool	validate_map_accessibility(t_game *game);
+bool	check_accessible(char **map_copy, char **original_map);
+bool	find_player_position(char **map, int *player_x, int *player_y);
+void	ft_free_map(char **map);
+char	**copy_map(char **map);
+void	flood_fill(char **map, int x, int y);
+
+
+
+
+
 
 #endif
