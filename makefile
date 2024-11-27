@@ -6,7 +6,7 @@
 #    By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 10:12:21 by lnierobi          #+#    #+#              #
-#    Updated: 2024/11/27 12:49:14 by lnierobi         ###   ########.fr        #
+#    Updated: 2024/11/27 19:42:50 by lnierobi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
-LDFLAGS = -fsanitize=address
+#LDFLAGS = -fsanitize=address
 OBJ_DIR := ./obj
 DEP_DIR := $(OBJ_DIR)/.deps
 INC_DIRS := .
@@ -36,7 +36,7 @@ MLXFT_LIB = $(MLXFT_BUILD_DIR)/$(MLXFT)
 MLXFTFLAGS = -L$(MLXFT_BUILD_DIR) -lmlx42 -Iinclude -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 MLXFT_REPO = https://github.com/codam-coding-college/MLX42.git
 
-SRCS = main.c reading_map.c map_validation.c check_wall.c rendering_map.c floodfill.c
+SRCS = main.c reading_map.c map_validation.c check_wall.c rendering_map.c floodfill.c player_movement.c
 
 OBJECTS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
@@ -102,7 +102,7 @@ $(MLXFT_LIB): init-mlx
 
 $(NAME): $(LIBFT_LIB) $(MLXFT_LIB) $(OBJECTS)
 	@$(CC) -o $@ $(OBJECTS) $(LIBFTFLAGS) $(MLXFTFLAGS)
-#$(LDFLAGS)
+	#$(LDFLAGS)
 	@echo "$(SUCCESS)"
 
 clean: remove-submodules

@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/27 12:45:35 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/27 19:36:00 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	main(int argc, char *argv[])
 	// function which deletes all and free
 	map_rendering(&game);
 	// ft_printf("ass\n");
+	mlx_key_hook(game.mlx, &player_movement, &game);
 	mlx_loop(game.mlx);
-
+	mlx_terminate(game.mlx);
+	//ft_free_map(game);
 	return (0);
 }
