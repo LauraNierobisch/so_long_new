@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:52:07 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/10/27 15:12:23 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:40:15 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	reading_map(t_game *game, char *path)
 		return ;
 
 	line = get_next_line(fd);
+	if(!line)
+	{
+		ft_printf("Error: empthy map file\n");
+		exit(1);
+	}
 	while (line != NULL)
 	{
 		maplines++;
@@ -42,7 +47,7 @@ void	reading_map(t_game *game, char *path)
 			free(line);
 			free(map_string);
 			close(fd);
-			return ;
+			exit(1);
 		}
 
 		free(map_string);
@@ -62,16 +67,16 @@ void	reading_map(t_game *game, char *path)
 	free(map_string);
 }
 
-void with_map(t_game *game)
-{
-	game->width = 0;
+// void with_map(t_game *game)
+// {
+// 	game->width = 0;
 
-	while (game->map[game->width + 1] != NULL)
-		game->width++;
-}
-void leng_map(t_game *game)
-{
-	game->leng = 0;
-	int i = 0;
-	game->leng = ft_strlen(game->map[i]);
-}
+// 	while (game->map[game->width + 1] != NULL)
+// 		game->width++;
+// }
+// void leng_map(t_game *game)
+// {
+// 	game->leng = 0;
+// 	int i = 0;
+// 	game->leng = ft_strlen(game->map[i]);
+// }

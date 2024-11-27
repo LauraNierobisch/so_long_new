@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:55:19 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/27 12:47:47 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/27 19:02:00 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	exit_valid(t_game *game)
 	e_found = 0;
 	i = 0;
 	j = 1;
-	while (game-> map && game->map[i])
+	while (game->map && game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j] != '\0')
@@ -48,7 +48,7 @@ bool	player_valid(t_game *game)
 	p_found = 0;
 	i = 0;
 	j = 1;
-	while (game-> map && game->map[i])
+	while (game->map && game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j] != '\0')
@@ -91,73 +91,92 @@ bool	colect_valid(t_game *game)
 	}
 	return (true);
 }
-// void	map_validation(t_game *game)
-// {
-// 	if (!left_side_wall(game))
-// 	{
-// 		ft_putstr_fd("Error left side wall\n", 2);
-// 		return ;
-// 	}
-// 	if (!right_side_wall(game))
-// 	{
-// 		ft_putstr_fd("Error right side wall\n", 2);
-// 		return ;
-// 	}
-// 	if (!down_wall(game))
-// 	{
-// 		ft_putstr_fd("Error down wall\n", 2);
-// 		return ;
-// 	}
-// 	if (!top_wall(game))
-// 	{
-// 		ft_putstr_fd("Error top wall\n", 2);
-// 		return ;
-// 	}
-// 	if (!colect_valid(game))
-// 	{
-// 		ft_putstr_fd("Error collectables\n", 2);
-// 	}
-
-// 	if (!player_valid(game))
-// 	{
-// 		ft_putstr_fd("Error player\n", 2);
-// 	}
-
-// 	if (!exit_valid(game))
-// 	{
-// 		ft_putstr_fd("Error exit\n", 2);
-// 	}
-// }
-void map_validation(t_game *game)
+void	map_validation(t_game *game)
 {
-    if (!left_side_wall(game))
-    {
-        ft_putstr_fd("Error left side wall\n", 2);
-        return;
-    }
-    if (!right_side_wall(game))
-    {
-        ft_putstr_fd("Error right side wall\n", 2);
-        return;
-    }
-    if (!down_wall(game))
-    {
-        ft_putstr_fd("Error down wall\n", 2);
-        return;
-    }
-    if (!top_wall(game))
-    {
-        ft_putstr_fd("Error top wall\n", 2);
-        return;
-    }
-    if (!colect_valid(game))
-    {
-        ft_putstr_fd("Error collectables\n", 2);
-        return;
-    }
-    if (!validate_map_accessibility(game))
-    {
-        ft_putstr_fd("Error: Map not accessible\n", 2);
-        return;
-    }
+	int i;
+	i = 0;
+	while (game->map[i])
+	{
+		ft_printf("%s\n", game->map[i]);
+		i++;
+	}
+
+	if (!left_side_wall(game))
+	{
+		ft_putstr_fd("Error left side wall\n", 2);
+		exit(1);
+	}
+	if (!right_side_wall(game))
+	{
+		ft_putstr_fd("Error right side wall\n", 2);
+		exit(1);
+	}
+	if (!down_wall(game))
+	{
+		ft_putstr_fd("Error down wall\n", 2);
+		exit(1);
+	}
+	if (!top_wall(game))
+	{
+		ft_putstr_fd("Error top wall\n", 2);
+		exit(1);
+	}
+	if (!colect_valid(game))
+	{
+		ft_putstr_fd("Error collectables\n", 2);
+		exit(1);
+	}
+	if (!player_valid(game))
+	{
+		ft_putstr_fd("Error player\n", 2);
+		exit(1);
+	}
+	if (!exit_valid(game))
+	{
+		ft_putstr_fd("Error exit\n", 2);
+		exit(1);
+	}
+	if (!validate_map_accessibility(game))
+	{
+		ft_putstr_fd("Error: Map not accessible\n", 2);
+		exit(1);
+	}
+	if (!checking_false_chars(game))
+	{
+		ft_putstr_fd("Error: wrong chars\n", 2);
+		exit(1);
+	}
 }
+// void map_validation(t_game *game)
+// {
+//     if (!left_side_wall(game))
+//     {
+//         ft_putstr_fd("Error left side wall\n", 2);
+//         exit(1);
+//     }
+//     if (!right_side_wall(game))
+//     {
+//         ft_putstr_fd("Error right side wall\n", 2);
+//         exit(1);
+//     }
+//     if (!down_wall(game))
+//     {
+//         ft_putstr_fd("Error down wall\n", 2);
+//         exit(1);
+//     }
+//     if (!top_wall(game))
+//     {
+//         ft_putstr_fd("Error top wall\n", 2);
+//         exit(1);
+//     }
+//     if (!colect_valid(game))
+//     {
+//         ft_putstr_fd("Error collectables\n", 2);
+//         exit(1);
+//     }
+//     if (!validate_map_accessibility(game))
+//     {
+//         ft_putstr_fd("Error: Map not accessible\n", 2);
+//         exit(1);
+//     }
+// }
