@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:52:07 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/27 17:40:15 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:45:16 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ void	reading_map(t_game *game, char *path)
 	maplines = 0;
 	line = NULL;
 
+
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
+	{
+		ft_printf("Wrong path to map\n");
 		return ;
+	}
 
 	line = get_next_line(fd);
 	if(!line)
@@ -65,6 +69,19 @@ void	reading_map(t_game *game, char *path)
 		return ;
 	}
 	free(map_string);
+
+
+	// int row = 0;
+	// int column = 0;
+	// while (game->map[column])
+	// {
+	// 	while (game->map[column][row])
+	// 	{
+	// 		ft_printf("%c", game->map[column][row]);
+	// 		row++;
+	// 	}
+	// 	column++;
+	// }
 }
 
 // void with_map(t_game *game)

@@ -6,14 +6,14 @@
 #    By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 10:12:21 by lnierobi          #+#    #+#              #
-#    Updated: 2024/11/27 19:42:50 by lnierobi         ###   ########.fr        #
+#    Updated: 2024/11/28 11:15:01 by lnierobi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address -g
 #LDFLAGS = -fsanitize=address
 OBJ_DIR := ./obj
 DEP_DIR := $(OBJ_DIR)/.deps

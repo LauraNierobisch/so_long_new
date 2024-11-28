@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/27 19:36:00 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:54:43 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(game.mlx, &player_movement, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
-	//ft_free_map(game);
+	mlx_delete_image(game.mlx, game.image.coffee);
+	mlx_delete_image(game.mlx, game.image.exit);
+	mlx_delete_image(game.mlx, game.image.player);
+	mlx_delete_image(game.mlx, game.image.wall);
+	mlx_delete_image(game.mlx, game.image.backround);
+	mlx_delete_texture(game.texture.collectible);
+	mlx_delete_texture(game.texture.exit);
+	mlx_delete_texture(game.texture.player);
+	mlx_delete_texture(game.texture.wall);
+	mlx_delete_texture(game.texture.floor);
+	ft_free_map(&game.map);
 	return (0);
 }

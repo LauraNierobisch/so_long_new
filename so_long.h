@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:58:00 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/27 19:39:01 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:00:33 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void	delete_texture(t_texture *texture);
 bool	validate_map_accessibility(t_game *game);
 bool	check_accessible(char **map_copy, char **original_map);
 bool	find_player_position(char **map, int *player_x, int *player_y);
-void	ft_free_map(char **map);
+void	ft_free_map(char ***map);
+// void	ft_free_map(t_game *game);
 char	**copy_map(char **map);
 void	flood_fill(char **map, int x, int y);
 bool	checking_false_chars(t_game *game);

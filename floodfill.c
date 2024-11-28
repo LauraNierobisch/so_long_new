@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:51:46 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/27 15:48:02 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:32:29 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	**copy_map(char **map)
 		copy[i] = ft_strdup(map[i]);
 		if (!copy[i])
 		{
-			ft_free_map(copy);
+			ft_free_map(&copy);
 			return (NULL);
 		}
 		i++;
@@ -50,18 +50,22 @@ char	**copy_map(char **map)
 	copy[i] = NULL;
 	return (copy);
 }
-void	ft_free_map(char **map)
+
+void	ft_free_map(char ***map)
 {
 	int	i;
 
 	i = 0;
-	while (map[i] != NULL)
+	while ((*map)[i] != NULL)
 	{
-		free(map[i]);
+		ft_printf("i = %d\n", i);
+		free((*map)[i]);
 		i++;
 	}
-	free(map);
+	free(*map);
+	*map = NULL;
 }
+
 bool	find_player_position(char **map, int *player_x, int *player_y)
 {
 	int	x;
@@ -122,15 +126,17 @@ bool	validate_map_accessibility(t_game *game)
 		return (false);
 	if (!find_player_position(game->map, &player_x, &player_y))
 	{
-		ft_free_map(map_copy);
+		ft_free_map(&map_copy);
 		return (false);
 	}
 	flood_fill(map_copy, player_x, player_y);
 	if (!check_accessible(map_copy, game->map))
 	{
-		ft_free_map(map_copy);
+		ft_free_map(&map_copy);
 		return (false);
 	}
-	ft_free_map(map_copy);
+	ft_free_map(&map_copy);
+				ft_printf("FREE IN FLOOD_FILL\n");
+
 	return (true);
 }
