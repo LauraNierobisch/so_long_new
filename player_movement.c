@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:32 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/29 15:20:53 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:08:32 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	player_movement(mlx_key_data_t key, void* param)
 {
-	char	**map_copy;
+
 	t_game	*game;
 	game = (t_game *)param;
 	game->move_count = 0;
-	map_copy = copy_map(game->map);
 
 	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
 	{
@@ -153,3 +152,9 @@ void game_sucess(t_game *game)
 	ft_free_map(&game->map);
 	exit(0);
 }
+// void game_sucess(t_game *game)
+// {
+// 	int i = 0;
+
+// 	if(game)
+// }

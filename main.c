@@ -6,15 +6,15 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/29 15:21:37 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:19:04 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "stdio.h"
-int	leaks(void)
+void	leaks(void)
 {
-	return (system("leaks so_long"));
+	system("leaks so_long");
 }
 
 int	main(int argc, char *argv[])
@@ -27,9 +27,15 @@ int	main(int argc, char *argv[])
 	reading_map(&game, argv[1]);
 	map_validation(&game);
 	game.mlx = mlx_init(game.width * BLOCK, game.height * BLOCK, "so_long", true);
+	// game.mlx = NULL;
 	if (!game.mlx)
 	{
-		exit(1);
+		ft_printf("here\n");
+		// exit(1);
+			ft_free_map(&game.map);
+
+		return (1);
+
 	}
 	// function which deletes all and free
 	map_rendering(&game);
