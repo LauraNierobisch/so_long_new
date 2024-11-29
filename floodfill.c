@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:51:46 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/28 14:32:29 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:17:53 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,16 @@ void	ft_free_map(char ***map)
 	i = 0;
 	while ((*map)[i] != NULL)
 	{
-		ft_printf("i = %d\n", i);
 		free((*map)[i]);
 		i++;
 	}
 	free(*map);
 	*map = NULL;
 }
-
 bool	find_player_position(char **map, int *player_x, int *player_y)
 {
 	int	x;
 	int	y;
-	t_game *game;
 
 	x = 0;
 	y = 0;
@@ -79,12 +76,10 @@ bool	find_player_position(char **map, int *player_x, int *player_y)
 		x = 0;
 		while (map[y][x] != '\0')
 		{
-			if (map[y][x] == 'P') 
+			if (map[y][x] == 'P')
 			{
 				*player_x = x;
 				*player_y = y;
-				game->player_position->x = *player_x;
-				game->player_position->y = *player_y;
 				return (true);
 			}
 			x++;
@@ -93,6 +88,33 @@ bool	find_player_position(char **map, int *player_x, int *player_y)
 	}
 	return (false);
 }
+// bool	find_player_position_for_struct(char **map, t_game *game)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	x = -1;
+// 	y = 0;
+// 	while (map[y] != NULL)
+// 	{
+// 		x = 0;
+// 		while (map[y][x] != '\0')
+// 		{
+// 			if (map[y][x] == 'P')
+// 			{
+// 				game->player_position.x = x;
+// 				game->player_position.y = y + 1;
+// 				ft_printf("position x: %i", game->player_position.x);
+// 				ft_printf("position y: %i", game->player_position.y);
+// 				return (true);
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+
+// 	return (false);
+// }
 bool	check_accessible(char **map_copy, char **original_map)
 {
 	int	x;
@@ -140,6 +162,7 @@ bool	validate_map_accessibility(t_game *game)
 	}
 	ft_free_map(&map_copy);
 				ft_printf("FREE IN FLOOD_FILL\n");
+	//find_player_position_for_struct(game->map, game);
 
 	return (true);
 }

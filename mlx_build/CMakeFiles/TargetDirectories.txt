@@ -1,0 +1,7 @@
+/Users/lnierobi/Desktop/so_long_git/mlx_build/CMakeFiles/mlx42.dir
+/Users/lnierobi/Desktop/so_long_git/mlx_build/CMakeFiles/edit_cache.dir
+/Users/lnierobi/Desktop/so_long_git/mlx_build/CMakeFiles/rebuild_cache.dir
+/Users/lnierobi/Desktop/so_long_git/mlx_build/CMakeFiles/list_install_components.dir
+/Users/lnierobi/Desktop/so_long_git/mlx_build/CMakeFiles/install.dir
+/Users/lnierobi/Desktop/so_long_git/mlx_build/CMakeFiles/install/local.dir
+/Users/lnierobi/Desktop/so_long_git/mlx_build/CMakeFiles/install/strip.dir

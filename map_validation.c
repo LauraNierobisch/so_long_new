@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:55:19 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/28 12:47:13 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:06:26 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ bool	player_valid(t_game *game)
 		while (game->map[i][j] != '\0')
 		{
 			if (game->map[i][j] == 'P')
+			{
+			game->player_position.x = i;
+				game->player_position.y = j;
 				p_found++;
+			}
 			j++;
 		}
 		i++;

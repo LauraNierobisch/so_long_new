@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:58:00 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/28 13:00:33 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:20:40 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	map_rendering(t_game *game);
 void	delete_texture(t_texture *texture);
 bool	validate_map_accessibility(t_game *game);
 bool	check_accessible(char **map_copy, char **original_map);
+// bool	find_player_position_for_struct(char **map, t_game *game);
 bool	find_player_position(char **map, int *player_x, int *player_y);
 void	ft_free_map(char ***map);
 // void	ft_free_map(t_game *game);
@@ -88,10 +89,10 @@ char	**copy_map(char **map);
 void	flood_fill(char **map, int x, int y);
 bool	checking_false_chars(t_game *game);
 void	player_movement(mlx_key_data_t key, void* param);
-
-
-
-
-
+void go_up(t_game *game);
+void go_down(t_game *game);
+void go_right(t_game *game);
+void go_left(t_game *game);
+void game_sucess(t_game *game);
 
 #endif
