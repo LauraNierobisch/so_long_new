@@ -70,6 +70,7 @@ bool	find_player_position(char **map, int *player_x, int *player_y)
 {
 	int	x;
 	int	y;
+	t_game *game;
 
 	x = 0;
 	y = 0;
@@ -78,10 +79,12 @@ bool	find_player_position(char **map, int *player_x, int *player_y)
 		x = 0;
 		while (map[y][x] != '\0')
 		{
-			if (map[y][x] == 'P')
+			if (map[y][x] == 'P') 
 			{
 				*player_x = x;
 				*player_y = y;
+				game->player_position->x = *player_x;
+				game->player_position->y = *player_y;
 				return (true);
 			}
 			x++;

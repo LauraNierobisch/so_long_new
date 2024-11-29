@@ -59,8 +59,10 @@ typedef struct s_game
 	int width;
 	int height;
 	int leng;
+	int num_colectibles;
+	int move_count;
 	t_texture	texture;
-	// t_position	pos;
+	t_position	player_position;
 	t_image 	image;
 }	t_game;
 

@@ -85,6 +85,7 @@ bool	colect_valid(t_game *game)
 		}
 		i++;
 	}
+	game->num_colectibles = c_found;
 	if (c_found < 1)
 	{
 		return (false);
