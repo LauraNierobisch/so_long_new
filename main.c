@@ -6,15 +6,27 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/29 17:19:04 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:21:47 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "stdio.h"
+
 void	leaks(void)
 {
 	system("leaks so_long");
+		atexit((void *)leaks);
+}
+
+void	check_success(void *param)
+{
+	t_game	*game;
+
+	game = (t_game *)param;
+	if (game->map[game->player_position.x][game->player_position.y] == 'E'
+		&& game->num_colectibles == 0)
+		game_sucess(game);
 }
 
 int	main(int argc, char *argv[])
@@ -23,36 +35,26 @@ int	main(int argc, char *argv[])
 		return (1);
 	t_game game;
 	argc = 0;
-	atexit((void *)leaks);
+
 	reading_map(&game, argv[1]);
 	map_validation(&game);
-	game.mlx = mlx_init(game.width * BLOCK, game.height * BLOCK, "so_long", true);
-	// game.mlx = NULL;
+	game.mlx = mlx_init(game.width * BLOCK, game.height * BLOCK, "so_long",
+			true);
 	if (!game.mlx)
 	{
-		ft_printf("here\n");
-		// exit(1);
-			ft_free_map(&game.map);
-
-		return (1);
-
+		ft_free_map(&game.map);
+		exit(1);
 	}
-	// function which deletes all and free
 	map_rendering(&game);
-	// ft_printf("ass\n");
 	mlx_key_hook(game.mlx, &player_movement, &game);
+	mlx_loop_hook(game.mlx, &check_success, &game);
 	mlx_loop(game.mlx);
-	mlx_terminate(game.mlx);
 	mlx_delete_image(game.mlx, game.image.coffee);
 	mlx_delete_image(game.mlx, game.image.exit);
 	mlx_delete_image(game.mlx, game.image.player);
 	mlx_delete_image(game.mlx, game.image.wall);
 	mlx_delete_image(game.mlx, game.image.backround);
-	mlx_delete_texture(game.texture.collectible);
-	mlx_delete_texture(game.texture.exit);
-	mlx_delete_texture(game.texture.player);
-	mlx_delete_texture(game.texture.wall);
-	mlx_delete_texture(game.texture.floor);
+	mlx_terminate(game.mlx);
 	ft_free_map(&game.map);
 	return (0);
 }

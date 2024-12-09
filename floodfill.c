@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:51:46 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/29 17:04:10 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:36:23 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,33 +88,7 @@ bool	find_player_position(char **map, int *player_x, int *player_y)
 	}
 	return (false);
 }
-// bool	find_player_position_for_struct(char **map, t_game *game)
-// {
-// 	int	x;
-// 	int	y;
 
-// 	x = -1;
-// 	y = 0;
-// 	while (map[y] != NULL)
-// 	{
-// 		x = 0;
-// 		while (map[y][x] != '\0')
-// 		{
-// 			if (map[y][x] == 'P')
-// 			{
-// 				game->player_position.x = x;
-// 				game->player_position.y = y + 1;
-// 				ft_printf("position x: %i", game->player_position.x);
-// 				ft_printf("position y: %i", game->player_position.y);
-// 				return (true);
-// 			}
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-
-// 	return (false);
-// }
 bool	check_accessible(char **map_copy, char **original_map)
 {
 	int	x;
@@ -161,8 +135,6 @@ bool	validate_map_accessibility(t_game *game)
 		return (false);
 	}
 	ft_free_map(&map_copy);
-				ft_printf("FREE IN FLOOD_FILL\n");
-	//find_player_position_for_struct(game->map, game);
 
 	return (true);
 }

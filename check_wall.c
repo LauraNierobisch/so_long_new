@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:59 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/29 16:23:17 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/11/29 19:32:13 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,14 @@ bool	checking_false_chars(t_game *game)
 bool	down_wall(t_game *game)
 {
 	int	i;
-	// int	j;
 	int	last;
 
 	i = 0;
-	// j = 0;
 	last = 0;
 	while (game->map[last + 1] != NULL)
 	{
-		// while (game->map[last][j])
-		// {
-		// 	j++;
-		// }
 		last++;
-		ft_printf("last = %d\n", last);
-		// ft_printf("j = %d\n", j);
 	}
-	// last = last - 2;
-	// ft_printf("last-2 = %d\n", last);
 	while (game->map[last][i] != '\0')
 	{
 		if (game->map[last][i] != '1')
