@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:58:00 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 14:35:54 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:07:09 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_image
 	mlx_image_t		*player;
 	mlx_image_t		*wall;
 	mlx_image_t		*backround;
+
 }					t_image;
 
 typedef struct s_game
@@ -93,4 +94,13 @@ void				go_right(t_game *game);
 void				go_left(t_game *game);
 void				game_sucess(t_game *game);
 bool				nl_valid(char *mapstring);
+void				map_validation_2(t_game *game);
+int					exit_mlx(t_game *game);
+void				split_map(t_game *game, char *map_string);
+bool				validate_map_accessibility(t_game *game);
+int					open_file(char *path);
+char				*read_lines(int fd);
+void				validate_map(char *map_string);
+void				render(t_game *game, size_t i, size_t j);
+
 #endif

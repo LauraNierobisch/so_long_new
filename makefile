@@ -6,7 +6,7 @@
 #    By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 10:12:21 by lnierobi          #+#    #+#              #
-#    Updated: 2024/11/29 17:02:19 by lnierobi         ###   ########.fr        #
+#    Updated: 2024/12/09 15:56:32 by lnierobi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ MLXFT_LIB = $(MLXFT_BUILD_DIR)/$(MLXFT)
 MLXFTFLAGS = -L$(MLXFT_BUILD_DIR) -lmlx42 -Iinclude -lglfw #-framework Cocoa -framework OpenGL -framework IOKit
 MLXFT_REPO = https://github.com/codam-coding-college/MLX42.git
 
-SRCS = main.c reading_map.c map_validation.c check_wall.c rendering_map.c floodfill.c player_movement.c
+SRCS = main.c reading_map.c map_validation.c check_wall.c rendering_map.c floodfill.c player_movement.c so_long_helpers.c
 
 OBJECTS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 

@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:59 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/29 19:32:13 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:52:34 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ bool	top_wall(t_game *game)
 	}
 	return (true);
 }
+
 bool	checking_false_chars(t_game *game)
 {
 	int	i;
@@ -67,7 +68,6 @@ bool	down_wall(t_game *game)
 	{
 		if (game->map[last][i] != '1')
 		{
-			ft_printf("i = %d\n", i);
 			return (false);
 		}
 		i++;
@@ -75,6 +75,7 @@ bool	down_wall(t_game *game)
 	game->width = i;
 	return (true);
 }
+
 bool	right_side_wall(t_game *game)
 {
 	int	i;
@@ -93,15 +94,17 @@ bool	right_side_wall(t_game *game)
 		else if (len != flag)
 			return (false);
 		if (game->map[i + 1] == NULL)
-			break;
+			break ;
 		i++;
 	}
 	game->height = i + 1;
 	return (true);
 }
+
 bool	left_side_wall(t_game *game)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (game->map[i] != NULL)
 	{

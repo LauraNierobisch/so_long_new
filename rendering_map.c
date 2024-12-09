@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:43 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/11/29 19:30:44 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:55:36 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,12 @@ mlx_image_t	*texture_to_image(t_image *image, char map_char)
 		return (NULL);
 	}
 }
-void	delete_texture(t_texture *texture)
-{
-	mlx_delete_texture(texture->exit);
-	mlx_delete_texture(texture->player);
-	mlx_delete_texture(texture->wall);
-	mlx_delete_texture(texture->floor);
-	mlx_delete_texture(texture->collectible);
-}
-void	map_rendering(t_game *game)
-{
-	size_t i;
-	size_t j;
-	mlx_image_t *img;
-	mlx_image_t *bg_pl;
 
-	i = 0;
-	load_texture(&game->texture);
-	rendering_texture(&game->image, &game->texture, game->mlx);
+void	render(t_game *game, size_t i, size_t j)
+{
+	mlx_image_t	*img;
+	mlx_image_t	*bg_pl;
+
 	while (game->map[i])
 	{
 		j = 0;
@@ -95,5 +83,17 @@ void	map_rendering(t_game *game)
 		}
 		i++;
 	}
+}
+
+void	map_rendering(t_game *game)
+{
+	size_t		i;
+	size_t		j;
+
+	i = 0;
+	j = 0;
+	load_texture(&game->texture);
+	rendering_texture(&game->image, &game->texture, game->mlx);
+	render(game, i, j);
 	delete_texture(&game->texture);
 }

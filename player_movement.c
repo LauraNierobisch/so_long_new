@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:32 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 13:11:23 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:12:31 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,24 @@ void	player_movement(mlx_key_data_t key, void *param)
 	}
 	else if (key.key == MLX_KEY_UP && key.action == MLX_PRESS
 		&& game->map[game->player_position.x
-		- 1][game->player_position.y] != '1')
-	{
+			- 1][game->player_position.y] != '1')
 		go_up(game);
-	}
 	else if (key.key == MLX_KEY_DOWN && key.action == MLX_PRESS
 		&& game->map[game->player_position.x
-		+ 1][game->player_position.y] != '1')
-	{
+			+ 1][game->player_position.y] != '1')
 		go_down(game);
-	}
 	else if (key.key == MLX_KEY_RIGHT && key.action == MLX_PRESS
 		&& game->map[game->player_position.x][game->player_position.y
 		+ 1] != '1')
-	{
 		go_right(game);
-	}
 	else if (key.key == MLX_KEY_LEFT && key.action == MLX_PRESS
 		&& game->map[game->player_position.x][game->player_position.y
 		- 1] != '1')
-	{
 		go_left(game);
-	}
 }
 
 void	go_up(t_game *game)
 {
-	if (game->map[game->player_position.x][game->player_position.y] == 'E'
-		&& game->num_colectibles == 0)
-		game_sucess(game);
 	if (game->map[game->player_position.x][game->player_position.y] == 'E')
 	{
 		mlx_image_to_window(game->mlx, game->image.exit, game->player_position.y
@@ -77,11 +66,9 @@ void	go_up(t_game *game)
 	game->move_count++;
 	ft_printf("count of moves: %d\n", game->move_count);
 }
+
 void	go_down(t_game *game)
 {
-	if (game->map[game->player_position.x][game->player_position.y] == 'E'
-		&& game->num_colectibles == 0)
-		game_sucess(game);
 	if (game->map[game->player_position.x][game->player_position.y] == 'E')
 	{
 		ft_printf("go down after player on exit");
@@ -107,11 +94,9 @@ void	go_down(t_game *game)
 	game->move_count++;
 	ft_printf("count of moves: %d\n", game->move_count);
 }
+
 void	go_right(t_game *game)
 {
-	if (game->map[game->player_position.x][game->player_position.y] == 'E'
-		&& game->num_colectibles == 0)
-		game_sucess(game);
 	if (game->map[game->player_position.x][game->player_position.y] == 'E')
 	{
 		mlx_image_to_window(game->mlx, game->image.exit, game->player_position.y
@@ -136,11 +121,9 @@ void	go_right(t_game *game)
 	game->move_count++;
 	ft_printf("count of moves: %d\n", game->move_count);
 }
+
 void	go_left(t_game *game)
 {
-	if (game->map[game->player_position.x][game->player_position.y] == 'E'
-		&& game->num_colectibles == 0)
-		game_sucess(game);
 	if (game->map[game->player_position.x][game->player_position.y] == 'E')
 	{
 		mlx_image_to_window(game->mlx, game->image.exit, game->player_position.y
@@ -165,8 +148,14 @@ void	go_left(t_game *game)
 	game->move_count++;
 	ft_printf("count of moves: %d\n", game->move_count);
 }
-void	game_sucess(t_game *game)
-{
-	ft_free_map(&game->map);
-	exit(0);
-}
+// void	game_sucess(t_game *game)
+// {
+// 	mlx_delete_image(game->mlx, game->image.coffee);
+// 	mlx_delete_image(game->mlx, game->image.exit);
+// 	mlx_delete_image(game->mlx, game->image.player);
+// 	mlx_delete_image(game->mlx, game->image.wall);
+// 	mlx_delete_image(game->mlx, game->image.backround);
+// 	mlx_terminate(game->mlx);
+// 	ft_free_map(&game->map);
+// 	exit(0);
+// }

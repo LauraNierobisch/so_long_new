@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:55:19 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 12:46:41 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:09:11 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,10 @@ bool	player_valid(t_game *game)
 		i++;
 	}
 	if (p_found != 1)
-	{
 		return (false);
-	}
 	return (true);
 }
+
 bool	colect_valid(t_game *game)
 {
 	int	c_found;
@@ -102,11 +101,6 @@ void	map_validation(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map[i])
-	{
-		ft_printf("%s\n", game->map[i]);
-		i++;
-	}
 	if (!left_side_wall(game))
 	{
 		ft_putstr_fd("Error left side wall\n", 2);
@@ -127,6 +121,11 @@ void	map_validation(t_game *game)
 		ft_putstr_fd("Error top wall\n", 2);
 		exit(1);
 	}
+	map_validation_2(game);
+}
+
+void	map_validation_2(t_game *game)
+{
 	if (!colect_valid(game))
 	{
 		ft_putstr_fd("Error collectables\n", 2);

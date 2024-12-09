@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:51:46 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 14:36:23 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:54:48 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ void	flood_fill(char **map, int x, int y)
 {
 	if (x < 0 || y < 0 || map[y] == NULL || map[y][x] == '\0'
 		|| map[y][x] == '1')
-		return;
+		return ;
 	if (map[y][x] == 'F')
-		return;
+		return ;
 	map[y][x] = 'F';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);
 	flood_fill(map, x, y - 1);
 }
+
 char	**copy_map(char **map)
 {
 	int		i;
@@ -51,19 +52,6 @@ char	**copy_map(char **map)
 	return (copy);
 }
 
-void	ft_free_map(char ***map)
-{
-	int	i;
-
-	i = 0;
-	while ((*map)[i] != NULL)
-	{
-		free((*map)[i]);
-		i++;
-	}
-	free(*map);
-	*map = NULL;
-}
 bool	find_player_position(char **map, int *player_x, int *player_y)
 {
 	int	x;
@@ -112,6 +100,7 @@ bool	check_accessible(char **map_copy, char **original_map)
 	}
 	return (true);
 }
+
 bool	validate_map_accessibility(t_game *game)
 {
 	char	**map_copy;
@@ -135,6 +124,5 @@ bool	validate_map_accessibility(t_game *game)
 		return (false);
 	}
 	ft_free_map(&map_copy);
-
 	return (true);
 }
