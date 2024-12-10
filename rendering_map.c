@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:43 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 17:55:36 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:54:19 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ mlx_image_t	*texture_to_image(t_image *image, char map_char)
 void	render(t_game *game, size_t i, size_t j)
 {
 	mlx_image_t	*img;
-	mlx_image_t	*bg_pl;
+	mlx_image_t	*backround_pl;
 
 	while (game->map[i])
 	{
@@ -69,12 +69,14 @@ void	render(t_game *game, size_t i, size_t j)
 		while (game->map[i][j])
 		{
 			img = texture_to_image(&game->image, game->map[i][j]);
-			bg_pl = texture_to_image(&game->image, '0');
+			backround_pl = texture_to_image(&game->image, '0');
+			mlx_resize_image(backround_pl, 50, 50);
 			mlx_resize_image(img, 50, 50);
 			if (img)
 			{
 				if (game->map[i][j] == 'P')
-					mlx_image_to_window(game->mlx, bg_pl, j * 50, i * 50);
+					mlx_image_to_window(game->mlx, backround_pl, j * 50, i
+						* 50);
 				mlx_image_to_window(game->mlx, img, j * 50, i * 50);
 			}
 			if (!img || (mlx_image_to_window(game->mlx, img, 0, 0) < 0))
@@ -87,8 +89,8 @@ void	render(t_game *game, size_t i, size_t j)
 
 void	map_rendering(t_game *game)
 {
-	size_t		i;
-	size_t		j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;

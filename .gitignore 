@@ -3,7 +3,5 @@
 *.c.o.d
 .vscode/
 *.cmake
-maps/
 .gitignore
 .gitmodules
-

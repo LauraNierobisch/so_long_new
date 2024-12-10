@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 16:03:16 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:53:54 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ int	exit_mlx(t_game *game)
 	exit(1);
 }
 
+void	ft_free_map(char ***map)
+{
+	int	i;
+
+	i = 0;
+	while ((*map)[i] != NULL)
+	{
+		free((*map)[i]);
+		i++;
+	}
+	free(*map);
+	*map = NULL;
+}
+
 int	main(int argc, char *argv[])
 {
 	t_game	game;
@@ -52,12 +66,6 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(game.mlx, &player_movement, &game);
 	mlx_loop_hook(game.mlx, &check_success, &game);
 	mlx_loop(game.mlx);
-	mlx_delete_image(game.mlx, game.image.coffee);
-	mlx_delete_image(game.mlx, game.image.exit);
-	mlx_delete_image(game.mlx, game.image.player);
-	mlx_delete_image(game.mlx, game.image.wall);
-	mlx_delete_image(game.mlx, game.image.backround);
-	mlx_terminate(game.mlx);
-	ft_free_map(&game.map);
+	game_sucess(&game);
 	return (0);
 }

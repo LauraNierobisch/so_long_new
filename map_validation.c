@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:55:19 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 16:09:11 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:48:36 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,22 +104,22 @@ void	map_validation(t_game *game)
 	if (!left_side_wall(game))
 	{
 		ft_putstr_fd("Error left side wall\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	if (!right_side_wall(game))
 	{
 		ft_putstr_fd("Error right side wall\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	if (!down_wall(game))
 	{
 		ft_putstr_fd("Error down wall\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	if (!top_wall(game))
 	{
 		ft_putstr_fd("Error top wall\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	map_validation_2(game);
 }
@@ -129,26 +129,26 @@ void	map_validation_2(t_game *game)
 	if (!colect_valid(game))
 	{
 		ft_putstr_fd("Error collectables\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	if (!player_valid(game))
 	{
 		ft_putstr_fd("Error player\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	if (!exit_valid(game))
 	{
 		ft_putstr_fd("Error exit\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	if (!validate_map_accessibility(game))
 	{
 		ft_putstr_fd("Error: Map not accessible\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 	if (!checking_false_chars(game))
 	{
 		ft_putstr_fd("Error: wrong chars\n", 2);
-		exit(1);
+		exit_mlx(game);
 	}
 }

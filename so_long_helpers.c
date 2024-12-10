@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:10:43 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 17:55:04 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:08:19 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,38 @@ void	split_map(t_game *game, char *map_string)
 	free(map_string);
 }
 
+void	path_name_checker(char *path)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	str = "ber";
+	j = 0;
+	i = ft_strlen(path) - 3;
+	if (path[i] == str[j])
+	{
+		i++;
+		j++;
+	}
+	else
+	{
+		ft_putstr_fd("Error wrong map name\n", 2);
+		exit(1);
+	}
+}
+
 void	reading_map(t_game *game, char *path)
 {
 	int		fd;
 	char	*map_string;
 
+	path_name_checker(path);
 	fd = open_file(path);
 	map_string = read_lines(fd);
 	close(fd);
 	validate_map(map_string);
 	split_map(game, map_string);
-}
-
-void	ft_free_map(char ***map)
-{
-	int	i;
-
-	i = 0;
-	while ((*map)[i] != NULL)
-	{
-		free((*map)[i]);
-		i++;
-	}
-	free(*map);
-	*map = NULL;
 }
 
 void	delete_texture(t_texture *texture)

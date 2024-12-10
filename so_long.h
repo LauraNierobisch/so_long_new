@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:58:00 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/09 18:07:09 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:38:50 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int					open_file(char *path);
 char				*read_lines(int fd);
 void				validate_map(char *map_string);
 void				render(t_game *game, size_t i, size_t j);
+void				path_name_checker(char *path);
 
 #endif
