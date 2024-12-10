@@ -6,7 +6,7 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/10 14:04:04 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:44:05 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ int	main(int argc, char *argv[])
 	t_game	game;
 
 	if (argc != 2)
+	{
+		ft_putstr_fd("Error wrong input\n", 2);
 		return (1);
+	}
 	argc = 0;
 	reading_map(&game, argv[1]);
 	map_validation(&game);
