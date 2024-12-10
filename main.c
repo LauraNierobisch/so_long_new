@@ -6,12 +6,11 @@
 /*   By: lnierobi <lnierobi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:56:25 by lnierobi          #+#    #+#             */
-/*   Updated: 2024/12/10 13:53:54 by lnierobi         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:04:04 by lnierobi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "stdio.h"
 
 // void	leaks(void)
 // {
