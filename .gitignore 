@@ -3,5 +3,3 @@
 *.c.o.d
 .vscode
 *.cmake
-.gitignore
-.gitmodules
