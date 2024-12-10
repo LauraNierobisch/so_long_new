@@ -2,4 +2,3 @@
 *.d
 *.c.o.d
 .vscode
-*.cmake
