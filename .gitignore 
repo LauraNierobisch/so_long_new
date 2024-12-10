@@ -1,4 +1,3 @@
 *.o
 *.d
 *.c.o.d
-.vscode
