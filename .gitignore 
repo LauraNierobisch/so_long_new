@@ -1,7 +1,7 @@
 *.o
 *.d
 *.c.o.d
-.vscode/
+.vscode
 *.cmake
 .gitignore
 .gitmodules
